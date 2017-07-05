@@ -1,14 +1,18 @@
 # DevOpsTeam3
-Repo for team project for DevOps
+We are creating a simple and clean Weather Web app.
 
-List of Project Ideas:
- + EX1
- + EX2
- + EX3
+Development Stack
+-----------------
+* WeatherUnderground API
+* Mysql Database
+* Php for backend Language
+* Javascript for frontend
+
+
 
  Team Members
  ------------
- Ryan
- Chaise
- David
- Robert
+ * Ryan
+ * Chaise
+ * David
+ * Robert
