@@ -31,8 +31,8 @@ if(isset($_GET['get_email'])){
     }
 }
 
-//Return Location Array upon request
-if(isset($_GET['get_locations'])){
+//Return Location upon request
+if(isset($_GET['get_location'])){
     $status = $_GET['get_location'];
     if($status == "true"){
         $query = "SELECT location FROM `users` WHERE username='$username';";
