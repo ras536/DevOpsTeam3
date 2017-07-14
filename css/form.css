@@ -87,3 +87,11 @@ box-shadow: none;
 .weather-text{
   display: inline-block;
 }
+
+.alert {
+    color: #f44336;
+    margin-bottom: 10px;
+    padding: 0px;
+    font-size: 20px;
+    font-weight: bold;
+}
