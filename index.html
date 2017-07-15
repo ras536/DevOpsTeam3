@@ -1,47 +1,66 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-<head>
-  <!-- Bootstrap Core CSS -->
+
   <link href="css/bootstrap.min.css" rel="stylesheet">
-	
-	<!-- Custom CSS -->
-	<link href="css/custom.css" rel="stylesheet">
-    <link href="css/form.css" rel="stylesheet">
-	
-	<title>SW-DevOps Weather App</title>
+  <link href="css/navbar.css" rel="stylesheet">
+  <link href="css/form.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
+
+  <!-- Imported Fonts -->
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 </head>
 
 
-<body>
-	<div class="bg-blue">
-		<section id="header">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 text-center ">
-						<h1>SW-DevOps Weather App</h1>
-					</div>
-				</div>
-			</div>
-		</section>
-	</div>
 
-    <div class="container">
+<body>
+  <div class="bg-blue">
+    <section id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 text-center ">
+            <h1>SW-DevOps Weather App</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <div id="wrapper">
+      <!-- sidebar -->
+      <div id="sidebar-wrapper">
+        <!--PLACE ALL SIDEBAR CODE HERE-->
+        <ul class="sidebar-nav" style="margin-left: 0">
+          <li>
+            <a>Example Text</a>
+          </li>
+        </ul>
+        <!--END SIDEBAR CODE-->
+      </div>
+      <!-- /sidebar-wrapper -->
+
+      <!-- PAGE CONTENT START -->
+      <div class="container"></div>
+      <div class=" ">
         <div class="form">
-            <div class="form-screen">
-                <div>
-                    <h1 class="app-title">Location</h1>
+          <div class="form-screen">
+            <div>
+              <h1 class="app-title">Location</h1>
+            </div>
+            <div class="form-form">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="control-group">
+                    <input type="text" class="form-field" value="" placeholder="city" id="city">
+                  </div>
                 </div>
-                <div class="form-form">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="control-group">
-                                <input type="text" class="form-field" value="" placeholder="city" id="city">
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="control-group">
-                                <select type="text" class="form-field" id="state">
+                <div class="col-md-6">
+                  <div class="control-group">
+                    <select type="text" class="form-field" id="state">
                                     <option selected="selected">state</option>
                                     <option value="AL">Alabama</option>
                                     <option value="AK">Alaska</option>
@@ -94,103 +113,103 @@
                                     <option value="WV">West Virginia</option>
                                     <option value="WI">Wisconsin</option>
                                     <option value="WY">Wyoming</option>
-                                </select>	
-                            </div>
-                        </div>
-                    </div>
-                    <div class="alert" id="alert" style="display:none">
-                        Not a valid location.
-                    </div>
-                    <div class="row">
-                        <a class="btn btn-primary btn-large btn-block" id="submitButton" onclick="getWeather();">Go!</a>
-                    </div>
+                                </select>
+                  </div>
                 </div>
+              </div>
+              <div class="alert" id="alert" style="display:none">
+                Not a valid location.
+              </div>
+              <div class="row">
+                <a class="btn btn-primary btn-large btn-block" id="submitButton" onclick="getWeather();">Go!</a>
+              </div>
             </div>
+          </div>
         </div>
-	</div>
+      </div>
 
-    <div class="container" id="weather-info" style="display:none">
+      <div class="" id="weather-info" style="display:none">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <h2 class="weather-text">Here's the weather for&nbsp;</h2>
-                <h2 class="weather-text" id="location"></h2>
-            </div>
+          <div class="col-md-12 text-center">
+            <h2 class="weather-text">Here's the weather for&nbsp;</h2>
+            <h2 class="weather-text" id="location"></h2>
+          </div>
         </div>
         <div class="row">
-            <div class="col-md-6 text-center">
-                <h4 class="weather-text" id="weather"></h4>
-                <h4 class="weather-text"> and </h4>
-                <h4 class="weather-text" id="temp_f"></h4>
-                <h4 class="weather-text"> degrees fahrenheit.</h4>
-            </div>
-            <div class="col-med-6 text-center">
-                <h4 class="weather-text">Wind conditions: </h4>
-                <h4 class="weather-text" id="wind_mph"></h4>
-                <h4 class="weather-text"> mph, </h4>
-                <h4 class="weather-text" id="wind_dir"></h4>
-            </div>
+          <div class="col-md-6 text-center">
+            <h4 class="weather-text" id="weather"></h4>
+            <h4 class="weather-text"> and </h4>
+            <h4 class="weather-text" id="temp_f"></h4>
+            <h4 class="weather-text"> degrees fahrenheit.</h4>
+          </div>
+          <div class="col-med-6 text-center">
+            <h4 class="weather-text">Wind conditions: </h4>
+            <h4 class="weather-text" id="wind_mph"></h4>
+            <h4 class="weather-text"> mph, </h4>
+            <h4 class="weather-text" id="wind_dir"></h4>
+          </div>
         </div>
         <div class="row">
-            <div class="col-md-12 text-center" >
-                <h4 class="weather-text">Relative Humidity: </h4>
-                <h4 class="weather-text" id="relative_humidity"></h4>
-            </div>
+          <div class="col-md-12 text-center">
+            <h4 class="weather-text">Relative Humidity: </h4>
+            <h4 class="weather-text" id="relative_humidity"></h4>
+          </div>
         </div>
+      </div>
+      <!-- PAGE CONTENT END  -->
     </div>
-	
-
-	
-
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    <script>
-    function getWeather() {
-        var city = document.getElementById('city').value
-        var state = document.getElementById('state').value
-        jQuery(document).ready(function($) {
-            $.ajax({
-                url : "http://api.wunderground.com/api/8bbe2bcb995d1e41/conditions/q/"+state+"/"+city+".json",
-                dataType : "jsonp",
-                success : function(parsed_json) {
-                    if(parsed_json.hasOwnProperty('current_observation')){
-                    //if(parsed_json['current_observation']['display_location']['full'] != ''){
-                        var location = parsed_json['current_observation']['display_location']['full'];
-                        var zip = parsed_json['current_observation']['display_location']['zip'];
-                        var weather = parsed_json['current_observation']['weather'];
-                        var temp_f = parsed_json['current_observation']['temp_f'];
-                        var wind_mph = parsed_json['current_observation']['wind_mph'];
-                        var wind_dir = parsed_json['current_observation']['wind_dir'];
-                        var relative_humidity = parsed_json['current_observation']['relative_humidity'];
-                        
-                        document.getElementById('location').innerHTML = location;
-                        //document.getElementById('zip').innerHTML = zip;
-                        document.getElementById('weather').innerHTML = weather;
-                        document.getElementById('temp_f').innerHTML = temp_f;
-                        document.getElementById('wind_mph').innerHTML = wind_mph;
-                        document.getElementById('wind_dir').innerHTML = wind_dir;
-                        document.getElementById('relative_humidity').innerHTML = relative_humidity;
-
-                        document.getElementById('weather-info').style.display = 'block';
-                        if(document.getElementById('alert').style.display = 'block'){
-                            document.getElementById('alert').style.display = 'none';
-                        }
-                    }else{
-                        document.getElementById('alert').style.display = 'block';
-                    }
-
-                }
-            });
-        });
-    }
-
-    $(document).keypress(function(e){
-		if (e.which == 13){
-			$("#submitButton").click();
-		}
-	});
-    </script>
+    <!-- /wrapper -->
+  </div>
+  <!-- /container -->
 
 </body>
 
-	
+<!-- SCRIPTS -->
+<script src="js/jquery.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script>
+  function getWeather() {
+    var city = document.getElementById('city').value
+    var state = document.getElementById('state').value
+    jQuery(document).ready(function ($) {
+      $.ajax({
+        url: "http://api.wunderground.com/api/8bbe2bcb995d1e41/conditions/q/" + state + "/" + city + ".json",
+        dataType: "jsonp",
+        success: function (parsed_json) {
+          if (parsed_json.hasOwnProperty('current_observation')) {
+            //if(parsed_json['current_observation']['display_location']['full'] != ''){
+            var location = parsed_json['current_observation']['display_location']['full'];
+            var zip = parsed_json['current_observation']['display_location']['zip'];
+            var weather = parsed_json['current_observation']['weather'];
+            var temp_f = parsed_json['current_observation']['temp_f'];
+            var wind_mph = parsed_json['current_observation']['wind_mph'];
+            var wind_dir = parsed_json['current_observation']['wind_dir'];
+            var relative_humidity = parsed_json['current_observation']['relative_humidity'];
+
+            document.getElementById('location').innerHTML = location;
+            //document.getElementById('zip').innerHTML = zip;
+            document.getElementById('weather').innerHTML = weather;
+            document.getElementById('temp_f').innerHTML = temp_f;
+            document.getElementById('wind_mph').innerHTML = wind_mph;
+            document.getElementById('wind_dir').innerHTML = wind_dir;
+            document.getElementById('relative_humidity').innerHTML = relative_humidity;
+            document.getElementById('weather-info').style.display = 'block';
+            if (document.getElementById('alert').style.display = 'block') {
+              document.getElementById('alert').style.display = 'none';
+            }
+          } else {
+            document.getElementById('alert').style.display = 'block';
+          }
+        }
+      });
+    });
+  }
+  $(document).keypress(function (e) {
+    if (e.which == 13) {
+      $("#submitButton").click();
+    }
+  });
+</script>
+
 </html>

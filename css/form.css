@@ -7,8 +7,7 @@ box-sizing: border-box;
 }
 
 .form {
-margin: 20px auto;
-width: 70%;
+margin: 20px;
 }
 .form-screen {
 background-color: #FFF;
@@ -94,4 +93,12 @@ box-shadow: none;
     padding: 0px;
     font-size: 20px;
     font-weight: bold;
+}
+#sidebar {
+    width:20%;
+    background-color:#07367f;
+    border: 1px solid gray;
+    color:white;
+    display:table-cell;
+    height:100vh;
 }
