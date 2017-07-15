@@ -1,0 +1,10 @@
+runtime: php71
+api_version: 1
+service: devops3-app
+
+runtime_config:
+    document_root: app
+
+handlers:
+    - url: /.*
+      script:   app/index.php

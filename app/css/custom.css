@@ -1,0 +1,15 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #c4c4c4;
+}
+h1 {
+	font-weight: bold;
+    color: white;
+}
+.bg-blue {
+    background-color: #072b63
+}
+
