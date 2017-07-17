@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] === False)
+{
+   $_SESSION["logged_in"] = False;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
