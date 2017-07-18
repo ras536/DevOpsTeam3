@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/navbar.css" rel="stylesheet">
+  <link href="css/form.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">  
+	<link href="css/login.css"  rel="stylesheet">
+</head>
+
+
+
+<body>
+  <div class="bg-blue">
+    <section id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 text-center ">
+            <h1>SW-DevOps Weather App</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <div id="wrapper">
+      <!-- sidebar -->
+      <div id="sidebar-wrapper">
+        <!--PLACE ALL SIDEBAR CODE HERE-->
+        <ul class="sidebar-nav" style="margin-left: 0">
+          <!-- BEGIN SIGNED OUT CODE / LOGIN FORM CODE -->
+          <li id="signInStuff">
+            <button onclick="document.getElementById('loginForm').style.display='block'" class="btn btn-primary btn-large btn-block">Sign In</button>
+	
+            <form class="animate" method="post" action="">
+              <div id="loginForm" class="modal">
+                <div class="login">
+                  <div class="login-screen">
+                    <div class="imgcontainer">
+                      <span onclick="document.getElementById('loginForm').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+                    <div>
+                      <h1 class="app-title">Login</h1>
+                    </div>
+
+                    <div class="login-form">
+                      <div class="control-group">
+                        <input type="text" class="login-field" value="" placeholder="username" id="login-name">
+                        <label class="login-field-icon fui-user" for="login-name"></label>
+                      </div>
+
+                      <div class="control-group">
+                        <input type="password" class="login-field" value="" placeholder="password" id="login-pass">
+                        <label class="login-field-icon fui-lock" for="login-pass"></label>
+                      </div>
+                      
+                      <div id="incorrectPass"></div>
+
+                      <a class="btn btn-primary btn-large btn-block" id="submitButton" type="submit" 
+                      onclick="document.getElementById('loginForm').style.display='none';login();">Login</a>
+                    </div>
+                    <a class="createAccount" onclick="document.getElementById('createAccountForm').style.display='block';document.getElementById('loginForm').style.display='none';">Create an Account</a>
+                  </div>
+                </div>
+              </div>
+            </form>            
+          </li>
+          <!-- END SIGNED OUT / LOGIN FORM CODE -->
+
+          <!-- BEGIN CREATE ACCOUNT CODE -->
+          <li id="createAccount">
+	
+            <form class="animate" method="post" action="">
+              <div id="createAccountForm" class="modal">
+                <div class="login">
+                  <div class="login-screen">
+                    <div class="imgcontainer">
+                      <span onclick="document.getElementById('createAccountForm').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+                    <div>
+                      <h1 class="app-title">Create Account</h1>
+                    </div>
+
+                    <div class="login-form">
+                      <div class="control-group">
+                        <input type="text" class="login-field" value="" placeholder="username" id="create-username">
+                        <label class="login-field-icon fui-user" for="create-name"></label>
+                      </div>
+
+                      <div class="control-group">
+                        <input type="password" class="login-field" value="" placeholder="password" id="create-pass">
+                        <label class="login-field-icon fui-lock" for="login-pass"></label>
+                      </div>
+
+                      <div class="control-group">
+                        <input type="text" class="login-field" value="" placeholder="email" id="create-email">
+                        <label class="login-field-icon fui-user" for="create-email"></label>
+                      </div>
+
+                      <div class="control-group">
+                        <input type="text" class="login-field" value="" placeholder="Default City" id="create-city">
+                        <label class="login-field-icon fui-user" for="create-city"></label>
+                      </div>
+
+                      <div class="control-group">
+                        <select type="text" class="login-field" id="create-state">
+                                    <option selected="selected">Default State</option>
+                                    <option value="AL">Alabama</option>
+                                    <option value="AK">Alaska</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="CA">California</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="DC">District Of Columbia</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="WV">West Virginia</option>
+                                    <option value="WI">Wisconsin</option>
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                        <label class="login-field-icon fui-lock" for="create-state"></label>
+                      </div>
+                      
+                      <div id="incorrectPass"></div>
+
+                      <a class="btn btn-primary btn-large btn-block" id="submitCreate" type="submit" 
+                      onclick="document.getElementById('createAccount').style.display='none';createAccount();">Create Account</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>            
+          </li>
+          <!-- END CREATE ACCOUNT CODE -->
+
+          <!-- BEGIN LOGGED IN CODE -->
+
+          <!-- BEGIN LIST OF LOCATIONS -->
+          <li id="locationList" class="cityNames" style="display:none">
+            <ul id="subLocationList">
+            </ul>
+          </li>
+          <!-- END LIST OF LOCATIONS -->
+
+          <!-- BEGIN ADD LOCATION FORM -->
+          <li id="addLocation" style="display:none">
+            <button onclick="document.getElementById('addLocForm').style.display='block'" class="btn btn-primary btn-large btn-block">Add Location</button>
+
+            <form class="animate" method="post" action="">
+              <div id="addLocForm" class="modal">
+                <div class="login">
+                  <div class="login-screen">
+                    <div class="imgcontainer">
+                      <span onclick="document.getElementById('addLocForm').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+                    <div>
+                      <h1 class="app-title">Add Location</h1>
+                    </div>
+
+                    <div class="login-form">
+                      <div class="control-group">
+                        <input type="text" class="login-field" value="" placeholder="city" id="newCity">
+                        <label class="login-field-icon fui-user" for="newCity"></label>
+                      </div>
+
+                      <div class="control-group">
+                        <select type="text" class="login-field" id="newState">
+                                    <option selected="selected">state</option>
+                                    <option value="AL">Alabama</option>
+                                    <option value="AK">Alaska</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="CA">California</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="DC">District Of Columbia</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="WV">West Virginia</option>
+                                    <option value="WI">Wisconsin</option>
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                        <label class="login-field-icon fui-lock" for="newState"></label>
+                      </div>
+                      
+                      <div class="alert" id="incorrectEntry" style="display:none">
+                        Not a valid location.
+                      </div>
+                      <a class="btn btn-primary btn-large btn-block" id="submitNewLoc" type="submit" 
+                      onclick="addLocation();">Submit</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>            
+          </li>
+          <!-- END ADD LOCATION FORM -->
+
+          <!-- BEGIN SIGN OUT CODE -->
+          <li id="signOutBtn" style="display:none">
+            <button onclick="signout();" class="btn btn-primary btn-large btn-block">Sign Out</button>
+          </li>
+          <!-- END SIGN OUT CODE -->
+          <!-- END LOGGED IN CODE -->
+        </ul>
+        <!--END SIDEBAR CODE-->
+      </div>
+      <!-- /sidebar-wrapper -->
+
+      <!-- PAGE CONTENT START -->
+      <div class="container"></div>
+      <div class=" ">
+        <div class="form">
+          <div class="form-screen">
+            <div>
+              <h1 class="app-title">Location</h1>
+            </div>
+            <div class="form-form">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="control-group">
+                    <input type="text" class="form-field" value="" placeholder="city" id="city">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="control-group">
+                    <select type="text" class="form-field" id="state">
+                                    <option selected="selected">state</option>
+                                    <option value="AL">Alabama</option>
+                                    <option value="AK">Alaska</option>
+                                    <option value="AZ">Arizona</option>
+                                    <option value="AR">Arkansas</option>
+                                    <option value="CA">California</option>
+                                    <option value="CO">Colorado</option>
+                                    <option value="CT">Connecticut</option>
+                                    <option value="DE">Delaware</option>
+                                    <option value="DC">District Of Columbia</option>
+                                    <option value="FL">Florida</option>
+                                    <option value="GA">Georgia</option>
+                                    <option value="HI">Hawaii</option>
+                                    <option value="ID">Idaho</option>
+                                    <option value="IL">Illinois</option>
+                                    <option value="IN">Indiana</option>
+                                    <option value="IA">Iowa</option>
+                                    <option value="KS">Kansas</option>
+                                    <option value="KY">Kentucky</option>
+                                    <option value="LA">Louisiana</option>
+                                    <option value="ME">Maine</option>
+                                    <option value="MD">Maryland</option>
+                                    <option value="MA">Massachusetts</option>
+                                    <option value="MI">Michigan</option>
+                                    <option value="MN">Minnesota</option>
+                                    <option value="MS">Mississippi</option>
+                                    <option value="MO">Missouri</option>
+                                    <option value="MT">Montana</option>
+                                    <option value="NE">Nebraska</option>
+                                    <option value="NV">Nevada</option>
+                                    <option value="NH">New Hampshire</option>
+                                    <option value="NJ">New Jersey</option>
+                                    <option value="NM">New Mexico</option>
+                                    <option value="NY">New York</option>
+                                    <option value="NC">North Carolina</option>
+                                    <option value="ND">North Dakota</option>
+                                    <option value="OH">Ohio</option>
+                                    <option value="OK">Oklahoma</option>
+                                    <option value="OR">Oregon</option>
+                                    <option value="PA">Pennsylvania</option>
+                                    <option value="RI">Rhode Island</option>
+                                    <option value="SC">South Carolina</option>
+                                    <option value="SD">South Dakota</option>
+                                    <option value="TN">Tennessee</option>
+                                    <option value="TX">Texas</option>
+                                    <option value="UT">Utah</option>
+                                    <option value="VT">Vermont</option>
+                                    <option value="VA">Virginia</option>
+                                    <option value="WA">Washington</option>
+                                    <option value="WV">West Virginia</option>
+                                    <option value="WI">Wisconsin</option>
+                                    <option value="WY">Wyoming</option>
+                                </select>
+                  </div>
+                </div>
+              </div>
+              <div class="alert" id="alert" style="display:none">
+                Not a valid location.
+              </div>
+              <div class="row">
+                <a class="btn btn-primary btn-large btn-block" id="submitButton" onclick="submitLocation();">Go!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="" id="weather-info" style="display:none">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h2 class="weather-text">Here's the weather for&nbsp;</h2>
+            <h2 class="weather-text" id="location"></h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <h4 class="weather-text" id="weather"></h4>
+            <h4 class="weather-text"> and </h4>
+            <h4 class="weather-text" id="temp_f"></h4>
+            <h4 class="weather-text"> degrees fahrenheit.</h4>
+          </div>
+          <div class="col-med-6 text-center">
+            <h4 class="weather-text">Wind conditions: </h4>
+            <h4 class="weather-text" id="wind_mph"></h4>
+            <h4 class="weather-text"> mph, </h4>
+            <h4 class="weather-text" id="wind_dir"></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h4 class="weather-text">Relative Humidity: </h4>
+            <h4 class="weather-text" id="relative_humidity"></h4>
+          </div>
+        </div>
+      </div>
+      <!-- PAGE CONTENT END  -->
+    </div>
+    <!-- /wrapper -->
+  </div>
+  <!-- /container -->
+
+</body>
+
+<!-- SCRIPTS -->
+
+<!-- BEGIN WEATHER API SCRIPT -->
+<script src="js/jquery.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script>
+  function getWeather(city, state) {
+    jQuery(document).ready(function ($) {
+      $.ajax({
+        url: "http://api.wunderground.com/api/8bbe2bcb995d1e41/conditions/q/" + state + "/" + city + ".json",
+        dataType: "jsonp",
+        success: function (parsed_json) {
+          if (parsed_json.hasOwnProperty('current_observation')) {
+            //if(parsed_json['current_observation']['display_location']['full'] != ''){
+            var location = parsed_json['current_observation']['display_location']['full'];
+            var zip = parsed_json['current_observation']['display_location']['zip'];
+            var weather = parsed_json['current_observation']['weather'];
+            var temp_f = parsed_json['current_observation']['temp_f'];
+            var wind_mph = parsed_json['current_observation']['wind_mph'];
+            var wind_dir = parsed_json['current_observation']['wind_dir'];
+            var relative_humidity = parsed_json['current_observation']['relative_humidity'];
+
+            document.getElementById('location').innerHTML = location;
+            //document.getElementById('zip').innerHTML = zip;
+            document.getElementById('weather').innerHTML = weather;
+            document.getElementById('temp_f').innerHTML = temp_f;
+            document.getElementById('wind_mph').innerHTML = wind_mph;
+            document.getElementById('wind_dir').innerHTML = wind_dir;
+            document.getElementById('relative_humidity').innerHTML = relative_humidity;
+            document.getElementById('weather-info').style.display = 'block';
+            if (document.getElementById('alert').style.display = 'block') {
+              document.getElementById('alert').style.display = 'none';
+            }
+          } else {
+            document.getElementById('alert').style.display = 'block';
+          }
+        }
+      });
+    });
+  }
+
+  $(document).keypress(function (e) {
+    if (e.which == 13) {
+      $("#submitButton").click();
+    }
+  });
+</script>
+<!-- END WEATHER API SCRIPT -->
+
+<!-- BEGIN SUBMIT LOCATION SCRIPT -->
+<script>
+  function submitLocation() {
+    city = document.getElementById("city").value;
+    state = document.getElementById("state").value;
+    getWeather(city,state);
+  }
+</script>
+<!-- END SUBMIT LOCATION SCRIPT -->
+
+<!-- BEGIN LOGIN/LOGOUT SCRIPT -->
+<script>
+  function login() {
+    document.getElementById("signInStuff").style.display="none";
+    document.getElementById("signOutBtn").style.display="inline-block";
+    document.getElementById("locationList").style.display="inline-block";
+    document.getElementById("addLocation").style.display="inline-block";
+  }
+  function signout() {
+    document.getElementById("signInStuff").style.display="inline-block";
+    document.getElementById("signOutBtn").style.display="none";
+    document.getElementById("locationList").style.display="none";
+    document.getElementById("addLocation").style.display="none";
+  }
+</script>
+<!-- END LOGIN/LOGON SCRIPT -->
+
+<!-- BEGIN CREATE ACCOUNT SCRIPT -->
+<script>
+  function createAccount() {
+
+  //ADD CODE TO WRITE INFO TO DATABASE
+
+    var city = document.getElementById('create-city').value;
+    var state = document.getElementById('create-state').value;  
+    addLocation(city,state);
+    login();
+    }
+</script>
+<!-- END CREATE ACCOUNT SCRIPT -->
+
+<!-- BEGIN ADD LOCATION SCRIPT -->
+<script>
+  function addLocation(newCity, newState) {
+    if (newCity === undefined) {
+      newCity = document.getElementById('newCity').value;    
+    }
+    if (newState === undefined) {
+      newState = document.getElementById('newState').value;
+    }
+
+    //check via API call for valid entries
+    jQuery(document).ready(function ($) {
+      $.ajax({
+        url: "http://api.wunderground.com/api/8bbe2bcb995d1e41/conditions/q/" + newState + "/" + newCity + ".json",
+        dataType: "jsonp",
+        success: function (parsed_json) {
+          //if valid, perform operation to add li
+          if (parsed_json.hasOwnProperty('current_observation')) {
+            document.getElementById('addLocForm').style.display='none';
+
+            var subLocationList = document.getElementById('subLocationList');  
+            var li = document.createElement("li");
+
+            li.setAttribute("id", newCity+"-"+newState);
+            subLocationList.appendChild(li);
+            document.getElementById(newCity+'-'+newState).innerHTML = "\<button onclick=\"getWeather('"+newCity+"','"+newState+"');\" class=\"btn btn-primary btn-large btn-block\">"+newCity+", "+newState+"\</button>";
+            //document.getElementById(newCity+'-'+newState).innerHTML"Is this working");
+
+
+            //Make sure error text is not being displayed
+            if (document.getElementById('incorrectEntry').style.display = 'block') {
+              document.getElementById('incorrectEntry').style.display = 'none';
+            }
+            //else, generate red text saying "invalid location"
+          } else {
+            document.getElementById('incorrectEntry').style.display = 'block';
+          }
+        }
+      });
+    });
+  }
+</script>
+<!-- END ADD LOCATION SCRIPT -->
+
+
+</html>
