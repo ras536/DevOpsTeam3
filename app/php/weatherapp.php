@@ -1,23 +1,52 @@
 <?php
-require_once './php_server_credentials';
-$connection = new mysqli($hn, $un, $pw, $db):
-if ($connection -> connect_error) die($connection->connect_error);
+//require_once "loginDevOps.php";
 
-//session_start();
-//
-//if (isset($_SESSION['username'])) {
-//    $username = $_SESSION['username'];
-//}
-//else die("ERROR: USERNAME MISSING FROM SESSION");
 
-if(isset($_GET['get_username'])){
+
+/*if(isset($_GET['get_username'])){
     $status = $_GET['get_username'];
     if($status == "true"){
         echo $username;
     }
-}
+}*/
 
 //Return Email upon request
+
+function dbCreateUser($username, $password, $email, $location, $hn, $un, $pw, $db)
+{
+	$connection = new mysqli($hn, $un, $pw, $db);
+	if ($connection -> connect_error) die($connection->connect_error);
+
+	if(dbGetUser($username, $hn, $un, $pw, $db) != 0)
+	{
+		echo 'fail';
+		return;
+	};
+	
+	$q = "insert into users (username, password, email, location) values
+		('$username', '$password', '$email', '$location');";
+	
+	$r = $connection->query($q);
+
+	if(!$r) die ($connection->error);
+	return $r;
+}
+
+function dbGetUser($username, $hn, $un, $pw, $db)
+{
+	$connection = new mysqli($hn, $un, $pw, $db);
+	if ($connection -> connect_error) die($connection->connect_error);
+
+	$q = "select * from users where username = '$username';";
+	
+	$r = $connection->query($q);
+	if(!$r) return 0;
+	if($r->num_rows == 0) return 0;
+	$r->data_seek(0);
+	$row = $r->fetch_array(MYSQLI_ASSOC);
+	return $row;
+}
+/*
 if(isset($_GET['get_email'])){
     $status = $_GET['get_email'];
     if($status == "true"){
@@ -60,5 +89,5 @@ if(isset($_POST['set_location'])){
     if(!$result) die($connection->error);
     echo "true";
 }
-
+*/
 ?>
