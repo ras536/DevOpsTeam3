@@ -14,9 +14,11 @@ final class DatabaseTest extends TestCase
         if ($c-> connect_error) die($c->connect_error);
         
         //create testing table
-        $q = "drop table if exists usersTest;" 
-                . "create table usersTest(username varchar(30),password varchar(120),email varchar(120),location varchar(120), primary key (username) );";
-        
+        $q = "drop table if exists usersTest;"; 
+        $r = $c->query($q);
+        if(!$r) die($c->error);
+
+        $q = "create table usersTest(username varchar(30),password varchar(120),email varchar(120),location varchar(120), primary key (username) );";
         $r = $c->query($q);
         if(!$r) die($c->error);
         

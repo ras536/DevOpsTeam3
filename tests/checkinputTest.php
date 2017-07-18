@@ -10,10 +10,18 @@ class checkinputTest extends TestCase {
         $this->assertFalse(checkUsername("stuff^$$%"));
     }
     
-    public function testPassword(){
+    public function testcheckPassword(){
         $this->assertTrue(checkPassword("PASSWORDPASSWORD"));
         $this->assertFalse(checkPassword("1234"));
     }
+
+    public function testcheckEmail(){
+        $this->assertTrue(checkEmail("user@info.com"));
+        $this->assertFalse(checkEmail("user.com"));
+    }
+
+    public function testcheckLocation(){
+        $this->
 
 }
 
