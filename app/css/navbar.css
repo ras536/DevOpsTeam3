@@ -38,6 +38,16 @@
 
 /* Sidebar Styles */
 
+.cityNames ul {
+    padding: 0px;
+}
+.cityNames li {
+    height: 2.5em;
+}
+#signOutBtn,#addLocation {
+    margin-top: .75em;
+}
+
 .sidebar-nav {
     position: absolute;
     top: 0;
@@ -57,7 +67,7 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #c4c4c4;
+    color: #dcdcdc;
 }
 
 .sidebar-nav li a:hover {
