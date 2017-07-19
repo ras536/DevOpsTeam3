@@ -1,0 +1,17 @@
+version: '3'
+services:
+    web:
+        build: .
+        ports:
+            - "8040:80"
+        volumes:
+            - .:/code
+        links:
+            - mysql
+    mysql:
+        image: "mysql:8.0.1"
+        environment:
+            MYSQL_ROOT_PASSWORD: "qwqwqwopl3"
+            MYSQL_DATABASE: "devopsteam3"
+        ports: 
+            - 3306:3306

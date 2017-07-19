@@ -10,7 +10,7 @@ final class DatabaseTest extends TestCase
     {
         
         //$c = new mysqli($hn, $un, $pw, $db);
-        $c = new mysqli("104.197.171.13", "root", "qwqwqwopl3", "devopsteam3");
+        $c = new mysqli("localhost", "root", "qwqwqwopl3", "devopsteam3");
         if ($c-> connect_error) die($c->connect_error);
         
         //create testing table

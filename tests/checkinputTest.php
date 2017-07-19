@@ -21,7 +21,17 @@ class checkinputTest extends TestCase {
     }
 
     public function testcheckLocation(){
-        $this->
+        $this->assertFalse(checkLocation("no"));
+        $this->assertTrue(checkLocation("Tupelo,MS"));
+    }
+
+    public function testfix_string(){
+        $this->assertEquals("Stuff",fix_string("<h>Stuff</h>"));
+    }
+
+    public function testmysql_fix_string(){
+        $this->assertEquals(" ",testmysql_fix_string("drop tables;"));
+    }
 
 }
 

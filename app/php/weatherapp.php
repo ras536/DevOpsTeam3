@@ -59,6 +59,7 @@ function dbDeleteUser($username, $hn, $un, $pw, $db)
     return 1;
 
 }
+
 function dbEditLocation($username, $location, $hn, $un, $pw, $db)
 {
     $connection = new mysqli($hn, $un, $pw, $db);
@@ -71,77 +72,84 @@ function dbEditLocation($username, $location, $hn, $un, $pw, $db)
     $r = $connection->query($q);
     return 1;
 }
- function createAccount($username, $password, $email, $location, $hn, $un, $pw, $db)
+
+function createAccount($username, $password, $email, $location, $hn, $un, $pw, $db)
+{
+    require_once "weatherapp.php";
+    
+    $connection = new mysqli($hn, $un, $pw, $db);
+    if ($connection -> connect_error) die($connection->connect_error);
+    
+    $u = fix_string($connection, trim($username));
+    $p = fix_string($connection, trim($password));
+    $e = fix_string($connection, trim($email));
+    $l = fix_string($connection, trim($location));
+    
+    if(!checkUsername($u))
     {
-        require_once "weatherapp.php";
-        
-        $connection = new mysqli($hn, $un, $pw, $db);
-        if ($connection -> connect_error) die($connection->connect_error);
-        
-        $u = fix_string($connection, trim($username));
-        $p = fix_string($connection, trim($password));
-        $e = fix_string($connection, trim($email));
-        $l = fix_string($connection, trim($location));
-        
-        if(!checkUsername($u))
-        {
-            return "A username must be entered with 5-30 characters consisting only of upper/lowercase letters, numbers, '@', and underscores.";
-        }
-        if(!checkPassword($p))
-        {
-            return "A password must be entered with 8-120 characters consisting only of upper/lowercase letters, numbers, '@', '!', '-', and underscores.";
-        }
-        if(!checkEmail($e))
-        {
-            return "A valid email must be entered.";
-        }
-        if(!checkLocation($l))
-        {
-            return "A valid location with both city and state must be selected.";
-        }
-        
-        dbCreateUser($u, $p, $e, $l, $hn, $un, $pw, $db);
-        return 1;
-        
+        return "A username must be entered with 5-30 characters consisting only of upper/lowercase letters, numbers, '@', and underscores.";
     }
-    function checkUsername($username)
+    if(!checkPassword($p))
     {
-        $check = preg_match("/^[a-zA-Z0-9_@]*$/", $username);
-        $len = strlen($username);
-        if($check && $len >= 5 && $len <= 30) return true;
-        else return false;
-        
+        return "A password must be entered with 8-120 characters consisting only of upper/lowercase letters, numbers, '@', '!', '-', and underscores.";
     }
-    function checkPassword($password)
+    if(!checkEmail($e))
     {
-        $check = preg_match("/^[a-zA-Z0-9_!-@]*$/", $password);
-        $len = strlen($password);
-        if($check && $len >= 8 && $len <=120) return true;
-        else return false;
+        return "A valid email must be entered.";
     }
-    function checkEmail($email)
+    if(!checkLocation($l))
     {
-        $check = filter_var($email, FILTER_VALIDATE_EMAIL);
-        $len = strlen($email);
-        if($check && $len <=120) return true;
-        else return false;
+        return "A valid location with both city and state must be selected.";
     }
-    function checkLocation($location)
-    {
-        $check = preg_match("/^[a-zA-Z0-9_!-@.,]*$/", $location);
-        $len = strlen($location);
-        if($check && $len <=120 && $len >= 4) return true;
-        else return false;
-    }
-    function fix_string($connection, $string)
-    {
-        return htmlentities(mysql_fix_string($connection, $string));
-    }
-    function mysql_fix_string($connection, $string)
-    {
-        if(get_magic_quotes_gpc()) $string = stripslashes($string);
-        return $connection->real_escape_string($string);
-    }
+    
+    dbCreateUser($u, $p, $e, $l, $hn, $un, $pw, $db);
+    return 1;
+    
+}
+
+function checkUsername($username)
+{
+    $check = preg_match("/^[a-zA-Z0-9_@]*$/", $username);
+    $len = strlen($username);
+    if($check && $len >= 5 && $len <= 30) return true;
+    else return false;
+    
+}
+
+function checkPassword($password)
+{
+    $check = preg_match("/^[a-zA-Z0-9_!-@]*$/", $password);
+    $len = strlen($password);
+    if($check && $len >= 8 && $len <=120) return true;
+    else return false;
+}
+
+function checkEmail($email)
+{
+    $check = filter_var($email, FILTER_VALIDATE_EMAIL);
+    $len = strlen($email);
+    if($check && $len <=120) return true;
+    else return false;
+}
+
+function checkLocation($location)
+{
+    $check = preg_match("/^[a-zA-Z0-9_!-@.,]*$/", $location);
+    $len = strlen($location);
+    if($check && $len <=120 && $len >= 4) return true;
+    else return false;
+}
+
+function fix_string($connection, $string)
+{
+    return htmlentities(mysql_fix_string($connection, $string));
+}
+
+function mysql_fix_string($connection, $string)
+{
+    if(get_magic_quotes_gpc()) $string = stripslashes($string);
+    return $connection->real_escape_string($string);
+}
 /*
 if(isset($_GET['get_email'])){
     $status = $_GET['get_email'];
