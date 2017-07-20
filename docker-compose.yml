@@ -1,12 +1,13 @@
 version: '3'
 services:
-    apache:
-        image: "eboraas/apache-php"
+    web:
+        image : "php:5.6.31-apache"
         ports:
-            - '8080:80'
-            - '443:443'
+            - "80:80"
         volumes:
-            - ./app/:/var/www/html/
+            - ./app:/var/www/html
+        links:
+            - mysql
     mysql:
         image: "mysql:8.0.1"
         environment:
