@@ -26,11 +26,35 @@ class checkinputTest extends TestCase {
     }
 
     public function testfix_string(){
-        $this->assertEquals("Stuff",fix_string("<h>Stuff</h>"));
+        // Setting login credentials
+        $hn = $GLOBALS['hnlogin'];
+        $un = $GLOBALS['unlogin'];
+        $pw = $GLOBALS['pwlogin'];
+        $db = $GLOBALS['dblogin'];
+
+        //Creating connection to database
+        //$c = new mysqli($hn, $un, $pw, $db);
+        $c = new mysqli($hn, $un, $pw, $db);
+        if ($c-> connect_error) die($c->connect_error);
+
+        // Running Test
+        $this->assertEquals("Stuff",fix_string($c,"<h>Stuff</h>"));
     }
 
     public function testmysql_fix_string(){
-        $this->assertEquals(" ",testmysql_fix_string("drop tables;"));
+        // Setting login credentials
+        $hn = $GLOBALS['hnlogin'];
+        $un = $GLOBALS['unlogin'];
+        $pw = $GLOBALS['pwlogin'];
+        $db = $GLOBALS['dblogin'];
+
+        //Creating connection to database
+        //$c = new mysqli($hn, $un, $pw, $db);
+        $c = new mysqli($hn, $un, $pw, $db);
+        if ($c-> connect_error) die($c->connect_error);
+
+        //running the test
+        $this->assertEquals(" ",mysql_fix_string($c,"drop tables;"));
     }
 
 }
