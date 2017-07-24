@@ -1,5 +1,5 @@
 <?php
-require_once "../app/php/weatherapp.php";
+require_once "./app/php/weatherapp.php";
 
 use PHPUnit\Framework\TestCase;
 

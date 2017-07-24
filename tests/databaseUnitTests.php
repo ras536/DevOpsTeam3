@@ -1,6 +1,6 @@
 <?php
-require_once "../app/php/weatherapp.php";
-require_once '../app/php/loginDevOps.php';
+require_once "./app/php/weatherapp.php";
+require_once './app/php/loginDevOps.php';
 use PHPUnit\Framework\TestCase;
 
 final class DatabaseTest extends TestCase
