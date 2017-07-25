@@ -140,6 +140,7 @@ function checkLocation($location)
     else return false;
 }
 
+//Strips string of mysql stuff then html stuff
 function fix_string($connection, $string)
 {
     return htmlentities(mysql_fix_string($connection, $string));

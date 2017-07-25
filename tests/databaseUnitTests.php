@@ -1,6 +1,6 @@
 <?php
 require_once "./app/php/weatherapp.php";
-require_once './app/php/loginDevOps.php';
+require_once './app/php/loginTesting.php';
 use PHPUnit\Framework\TestCase;
 
 final class DatabaseTest extends TestCase
@@ -13,7 +13,6 @@ final class DatabaseTest extends TestCase
         $pw = $GLOBALS['pwlogin'];
         $db = $GLOBALS['dblogin'];
         
-        //$c = new mysqli($hn, $un, $pw, $db);
         $c = new mysqli($hn, $un, $pw, $db);
         if ($c-> connect_error) die($c->connect_error);
         
@@ -44,6 +43,7 @@ final class DatabaseTest extends TestCase
         $this->assertEquals('emailtest', $row['email']);
         $this->assertEquals('locationtest', $row['location']);
     }
+
     public function testdbGetUser()
     {
         $hn = $GLOBALS['hnlogin'];
@@ -79,6 +79,7 @@ final class DatabaseTest extends TestCase
         $this->assertEquals('emailtest', $row['email']);
         $this->assertEquals('locationtest', $row['location']);
     }
+
     public function testdbDeleteUser()
     {
         $hn = $GLOBALS['hnlogin'];
@@ -117,6 +118,7 @@ final class DatabaseTest extends TestCase
         
         $this->assertEquals($numrows, 0);
     }
+
     public function testdbEditLocation()
     {
         $hn = $GLOBALS['hnlogin'];
@@ -141,7 +143,7 @@ final class DatabaseTest extends TestCase
         $r = $c->query($q);
         if(!$r) die($c->error);
         
-        dbEditLocation('usernametest', 'locationchanged', $hn, $un, $pw, $db);
+//Strips string of mysql stuff then html stuff        dbEditLocation('usernametest', 'locationchanged', $hn, $un, $pw, $db);
         
         $q = "select * from usersTest where username = 'usernametest';";
         $r = $c->query($q);

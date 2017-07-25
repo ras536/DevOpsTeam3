@@ -1,9 +1,10 @@
 <?php
 require_once "./app/php/weatherapp.php";
-
+require_once './app/php/loginTesting.php';
 use PHPUnit\Framework\TestCase;
 
 class checkinputTest extends TestCase {
+
     public function testcheckUsername(){
         $this->assertTrue(checkUsername("Devops1"));
         $this->assertFalse(checkUsername("st"));
@@ -25,22 +26,6 @@ class checkinputTest extends TestCase {
         $this->assertTrue(checkLocation("Tupelo,MS"));
     }
 
-    public function testfix_string(){
-        // Setting login credentials
-        $hn = $GLOBALS['hnlogin'];
-        $un = $GLOBALS['unlogin'];
-        $pw = $GLOBALS['pwlogin'];
-        $db = $GLOBALS['dblogin'];
-
-        //Creating connection to database
-        //$c = new mysqli($hn, $un, $pw, $db);
-        $c = new mysqli($hn, $un, $pw, $db);
-        if ($c-> connect_error) die($c->connect_error);
-
-        // Running Test
-        $this->assertEquals("Stuff",fix_string($c,"<h>Stuff</h>"));
-    }
-
     public function testmysql_fix_string(){
         // Setting login credentials
         $hn = $GLOBALS['hnlogin'];
@@ -49,13 +34,28 @@ class checkinputTest extends TestCase {
         $db = $GLOBALS['dblogin'];
 
         //Creating connection to database
-        //$c = new mysqli($hn, $un, $pw, $db);
         $c = new mysqli($hn, $un, $pw, $db);
         if ($c-> connect_error) die($c->connect_error);
 
         //running the test
         $this->assertEquals(" ",mysql_fix_string($c,"drop tables;"));
     }
+
+    public function testfix_string(){
+        // Setting login credentials
+        $hn = $GLOBALS['hnlogin'];
+        $un = $GLOBALS['unlogin'];
+        $pw = $GLOBALS['pwlogin'];
+        $db = $GLOBALS['dblogin'];
+
+        //Creating connection to database
+        $c = new mysqli($hn, $un, $pw, $db);
+        if ($c-> connect_error) die($c->connect_error);
+
+        // Running Test
+        $this->assertEquals("Stuff",fix_string($c,"<h>Stuff</h>"));
+    }
+
 
 }
 
