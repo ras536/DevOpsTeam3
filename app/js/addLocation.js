@@ -14,16 +14,32 @@ function addLocation(newCity, newState) {
         success: function (parsed_json) {
           //if valid, perform operation to add li
           if (parsed_json.hasOwnProperty('current_observation')) {
-            document.getElementById('addLocForm').style.display='none';
-
-            var subLocationList = document.getElementById('subLocationList');  
-            var li = document.createElement("li");
-
-            li.setAttribute("id", newCity+"-"+newState);
-            subLocationList.appendChild(li);
-            document.getElementById(newCity+'-'+newState).innerHTML = "\<button onclick=\"getWeather('"+newCity+"','"+newState+"');\" class=\"btn btn-primary btn-large btn-block\">"+newCity+", "+newState+"\</button>";
             
-            //********ADD CODE TO SAVE ADDITION TO DATABASE*********//
+                //get username from session variable
+                var username;
+                //place city-state into one var to send to DB
+                var location = newCity.concat("-");
+                var location = location.concat(newState);
+
+                jQuery.ajax({
+                    type: "POST",
+                    url: './app/php/weatherapp.php',
+                    data: {editLocation: true, user: username, loc : location},
+                    success: function (data) {
+                      if (data != 0){
+                        document.getElementById('addLocForm').style.display='none';
+
+                        var subLocationList = document.getElementById('subLocationList');  
+                        var li = document.createElement("li");
+
+                        li.setAttribute("id", newCity+"-"+newState);
+                        subLocationList.appendChild(li);
+                        document.getElementById(newCity+'-'+newState).innerHTML = "\<button onclick=\"getWeather('"+newCity+"','"+newState+"');\" class=\"btn btn-primary btn-large btn-block\">"+newCity+", "+newState+"\</button>";
+                      }else {
+                        alert("Add location failed. Please try again.");
+                      };
+                    }
+                });
 
             //Make sure error text is not being displayed
             if (document.getElementById('incorrectEntry').style.display = 'block') {
