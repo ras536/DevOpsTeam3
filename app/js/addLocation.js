@@ -22,8 +22,8 @@ function addLocation(newCity, newState) {
             li.setAttribute("id", newCity+"-"+newState);
             subLocationList.appendChild(li);
             document.getElementById(newCity+'-'+newState).innerHTML = "\<button onclick=\"getWeather('"+newCity+"','"+newState+"');\" class=\"btn btn-primary btn-large btn-block\">"+newCity+", "+newState+"\</button>";
-            //document.getElementById(newCity+'-'+newState).innerHTML"Is this working");
-
+            
+            //********ADD CODE TO SAVE ADDITION TO DATABASE*********//
 
             //Make sure error text is not being displayed
             if (document.getElementById('incorrectEntry').style.display = 'block') {

@@ -1,6 +1,6 @@
 function populateSelect() {
 
-    //array to hold options
+    //array to hold states
     var langArray = [
         {value: "AL", text: "Alabama"},
         {value: "AK", text: "Alaska"},
@@ -54,6 +54,8 @@ function populateSelect() {
         {value: "WY", text: "Wyoming"},
     ];
 
+
+    //Variables to handle the adding of the selections
     var getState = document.getElementById('state'),
     newState = document.getElementById('newState'),
     createState = document.getElementById('create-state'),

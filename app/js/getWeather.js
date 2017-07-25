@@ -15,7 +15,6 @@
             var relative_humidity = parsed_json['current_observation']['relative_humidity'];
 
             document.getElementById('location').innerHTML = location;
-            //document.getElementById('zip').innerHTML = zip;
             document.getElementById('weather').innerHTML = weather;
             document.getElementById('temp_f').innerHTML = temp_f;
             document.getElementById('wind_mph').innerHTML = wind_mph;

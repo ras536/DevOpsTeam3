@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>QUnit Tests</title>
+  <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.4.0.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture">
+  <script src="https://code.jquery.com/qunit/qunit-2.4.0.js"></script>
+  <script src="tests.js"></script>
+
+  
+
+
+<!-- INSERT INDEX.HTML CODE -->
+
+<html lang="en">
+
+<body>
+  <div class="bg-blue">
+    <section id="header">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 text-center ">
+            <h1>SW-DevOps Weather App</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+    <div id="wrapper">
+      <!-- sidebar -->
+      <div id="sidebar-wrapper">
+        <!--PLACE ALL SIDEBAR CODE HERE-->
+        <ul class="sidebar-nav" style="margin-left: 0">
+          <!-- BEGIN SIGNED OUT CODE / LOGIN FORM CODE -->
+          <li id="signInStuff">
+            <button onclick="document.getElementById('loginForm').style.display='block'" class="btn btn-primary btn-large btn-block">Sign In</button>
+	
+            <form class="animate" method="post" action="">
+              <div id="loginForm" class="modal">
+                <div class="login">
+                  <div class="login-screen">
+                    <div class="imgcontainer">
+                      <span onclick="document.getElementById('loginForm').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+                    <div>
+                      <h1 class="app-title">Login</h1>
+                    </div>
+
+                    <div class="login-form">
+                      <div class="control-group">
+                        <input type="text" class="login-field" value="" placeholder="username" id="login-name">
+                        <label class="login-field-icon fui-user" for="login-name"></label>
+                      </div>
+
+                      <div class="control-group">
+                        <input type="password" class="login-field" value="" placeholder="password" id="login-pass">
+                        <label class="login-field-icon fui-lock" for="login-pass"></label>
+                      </div>
+                      
+                      <div id="incorrectPass"></div>
+
+                      <a class="btn btn-primary btn-large btn-block" id="loginButton" type="submit" 
+                      onclick="document.getElementById('loginForm').style.display='none';login();">Login</a>
+                    </div>
+                    <a class="createAccount" onclick="document.getElementById('createAccountForm').style.display='block';document.getElementById('loginForm').style.display='none';">Create an Account</a>
+                  </div>
+                </div>
+              </div>
+            </form>            
+          </li>
+          <!-- END SIGNED OUT / LOGIN FORM CODE -->
+
+          <!-- BEGIN CREATE ACCOUNT CODE -->
+          <li id="createAccount">
+	
+            <form class="animate" method="post" action="">
+              <div id="createAccountForm" class="modal">
+                <div class="login">
+                  <div class="login-screen">
+                    <div class="imgcontainer">
+                      <span onclick="document.getElementById('createAccountForm').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+                    <div>
+                      <h1 class="app-title">Create Account</h1>
+                    </div>
+
+                    <div class="login-form">
+                      <div class="control-group">
+                        <input type="text" class="login-field" value="" placeholder="username" id="create-username">
+                        <label class="login-field-icon fui-user" for="create-name"></label>
+                      </div>
+
+                      <div class="control-group">
+                        <input type="password" class="login-field" value="" placeholder="password" id="create-pass">
+                        <label class="login-field-icon fui-lock" for="login-pass"></label>
+                      </div>
+
+                      <div class="control-group">
+                        <input type="text" class="login-field" value="" placeholder="email" id="create-email">
+                        <label class="login-field-icon fui-user" for="create-email"></label>
+                      </div>
+
+                      <div class="control-group">
+                        <input type="text" class="login-field" value="" placeholder="Default City" id="create-city">
+                        <label class="login-field-icon fui-user" for="create-city"></label>
+                      </div>
+
+                      <div class="control-group">
+                        <select type="text" class="login-field" id="create-state">
+                            <option selected="selected">Default State</option>
+                        </select>
+                        <label class="login-field-icon fui-lock" for="create-state"></label>
+                      </div>
+                      
+                      <div id="incorrectPass"></div>
+
+                      <a class="btn btn-primary btn-large btn-block" id="submitCreate" type="submit" 
+                      onclick="document.getElementById('createAccount').style.display='none';createAccount();">Create Account</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>            
+          </li>
+          <!-- END CREATE ACCOUNT CODE -->
+
+          <!-- BEGIN LOGGED IN CODE -->
+
+          <!-- BEGIN LIST OF LOCATIONS -->
+          <li id="locationList" class="cityNames" style="display:none">
+            <ul id="subLocationList">
+            </ul>
+          </li>
+          <!-- END LIST OF LOCATIONS -->
+
+          <!-- BEGIN ADD LOCATION FORM -->
+          <li id="addLocation" style="display:none">
+            <button onclick="document.getElementById('addLocForm').style.display='block'" class="btn btn-primary btn-large btn-block">Add Location</button>
+
+            <form class="animate" method="post" action="">
+              <div id="addLocForm" class="modal">
+                <div class="login">
+                  <div class="login-screen">
+                    <div class="imgcontainer">
+                      <span onclick="document.getElementById('addLocForm').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+                    <div>
+                      <h1 class="app-title">Add Location</h1>
+                    </div>
+
+                    <div class="login-form">
+                      <div class="control-group">
+                        <input type="text" class="login-field" value="" placeholder="city" id="newCity">
+                        <label class="login-field-icon fui-user" for="newCity"></label>
+                      </div>
+
+                      <div class="control-group">
+                        <select type="text" class="login-field" id="newState">
+                            <option selected="selected">state</option>
+                        </select>
+                        <label class="login-field-icon fui-lock" for="newState"></label>
+                      </div>
+                      
+                      <div class="alert" id="incorrectEntry" style="display:none">
+                        Not a valid location.
+                      </div>
+                      <a class="btn btn-primary btn-large btn-block" id="submitNewLoc" type="submit" 
+                      onclick="addLocation();">Submit</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>            
+          </li>
+          <!-- END ADD LOCATION FORM -->
+
+          <!-- BEGIN SIGN OUT CODE -->
+          <li id="signOutBtn" style="display:none">
+            <button onclick="signout();" class="btn btn-primary btn-large btn-block">Sign Out</button>
+          </li>
+          <!-- END SIGN OUT CODE -->
+          <!-- END LOGGED IN CODE -->
+        </ul>
+        <!--END SIDEBAR CODE-->
+      </div>
+      <!-- /sidebar-wrapper -->
+
+      <!-- PAGE CONTENT START -->
+      <div class="container"></div>
+      <div class=" ">
+        <div class="form">
+          <div class="form-screen">
+            <div>
+              <h1 class="app-title">Location</h1>
+            </div>
+            <div class="form-form">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="control-group">
+                    <input type="text" class="form-field" value="" placeholder="city" id="city">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="control-group">
+                    <select type="text" class="form-field" id="state">
+                        <option selected="selected">state</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="alert" id="alert" style="display:none">
+                Not a valid location.
+              </div>
+              <div class="row">
+                <a class="btn btn-primary btn-large btn-block" id="submitButton" onclick="submitLocation();">Go!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="" id="weather-info" style="display:none">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h2 class="weather-text">Here's the weather for&nbsp;</h2>
+            <h2 class="weather-text" id="location"></h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <h4 class="weather-text" id="weather"></h4>
+            <h4 class="weather-text"> and </h4>
+            <h4 class="weather-text" id="temp_f"></h4>
+            <h4 class="weather-text"> degrees fahrenheit.</h4>
+          </div>
+          <div class="col-med-6 text-center">
+            <h4 class="weather-text">Wind conditions: </h4>
+            <h4 class="weather-text" id="wind_mph"></h4>
+            <h4 class="weather-text"> mph, </h4>
+            <h4 class="weather-text" id="wind_dir"></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <h4 class="weather-text">Relative Humidity: </h4>
+            <h4 class="weather-text" id="relative_humidity"></h4>
+          </div>
+        </div>
+      </div>
+      <!-- PAGE CONTENT END  -->
+    </div>
+    <!-- /wrapper -->
+  </div>
+  <!-- /container -->
+
+</body>
+
+<!-- SCRIPTS -->
+
+<!-- INCLUDE JQUERY -->
+<script src="../app/js/jquery.js"></script>
+
+<!-- INCLUDE AJAX -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
+<!-- WEATHER API SCRIPT -->
+<script src="../app/js/getWeather.js"></script>
+
+<!-- SUBMIT LOCATION SCRIPT - used to feed getWeather() -->
+<script src="../app/js/submitLocation.js"></script>
+
+<!-- LOGIN SCRIPT -->
+<script src="../app/js/login.js"></script>
+
+<!-- LOGOUT SCRIPT -->
+<script src="../app/js/signout.js"></script>
+
+<!-- CREATE ACCOUNT SCRIPT -->
+<script src="../app/js/createAccount.js"></script>
+
+<!-- ADD LOCATION SCRIPT -->
+<script src="../app/js/addLocation.js"></script>
+
+<!-- POPULATE SELECT BOXES SCRIPT -->
+<script src="../app/js/populateSelect.js"></script>
+<script>
+  populateSelect();
+</script>
+
+<!-- Submit main weather form when enter is pressed -->
+<script>
+  $(document).keypress(function (e) {
+    if (e.which == 13) {
+      $("#submitButton").click();
+    }
+  });     
+</script>
+
+</html>
+<!-- END INDEX.HTML CODE -->
+</div>
+
+</body>
+</html>
+
+<!-- QUnit Help: https://code.tutsplus.com/tutorials/how-to-test-your-javascript-code-with-qunit--net-9077 -->
+<!-- QUnit Help 2: https://www.sitepoint.com/getting-started-qunit/ -->
