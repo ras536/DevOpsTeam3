@@ -11,6 +11,42 @@
 }*/
 
 //Return Email upon request
+function pageStart()
+{
+    session_start();
+    if(isset($_SESSION['username']) && isset($_SESSION['location']))
+    {
+        $u = $_SESSION['username'];
+        $l = $_SESSION['location'];
+        return "$u%$l";
+    }
+    else
+    {
+        return "error";
+    }
+}
+function loginFunction($username, $password, $hn, $un, $pw, $db)
+{
+    $r = dbGetUser($username, $hn, $un, Spw, $db);
+    
+    if($r == 0) return 0;
+    
+    if($password == $r['password'])
+    {
+        session_start();
+        $_SESSION['username'] = $r['username'];
+        $_SESSION['location'] = $r['location'];
+        
+        return $r['location'];
+    }
+}
+function logoutFunction()
+{
+    session_start();
+    session_destroy();
+    return 1;
+    
+}
 
 function dbCreateUser($username, $password, $email, $location, $hn, $un, $pw, $db)
 {
@@ -20,6 +56,7 @@ function dbCreateUser($username, $password, $email, $location, $hn, $un, $pw, $d
     if(dbGetUser($username, $hn, $un, $pw, $db) != 0)
     {
         //echo 'fail';
+        $connection->close();
         return;
     };
 
@@ -29,6 +66,7 @@ function dbCreateUser($username, $password, $email, $location, $hn, $un, $pw, $d
     $r = $connection->query($q);
 
     if(!$r) die ($connection->error);
+    $connection->close();
     return $r;
 }
 
@@ -40,10 +78,12 @@ function dbGetUser($username, $hn, $un, $pw, $db)
     $q = "select * from users where username = '$username';";
 
     $r = $connection->query($q);
+    $connection->close();
     if(!$r) return 0;
     if($r->num_rows == 0) return 0;
     $r->data_seek(0);
     $row = $r->fetch_array(MYSQLI_ASSOC);
+    //$connection->close();
     return $row;
 }
 
@@ -55,6 +95,7 @@ function dbDeleteUser($username, $hn, $un, $pw, $db)
     $q = "delete from users where username = '$username';";
     
     $r = $connection->query($q);
+    $connection->close();
     if(!$r) return 0;
     return 1;
 
@@ -65,11 +106,15 @@ function dbEditLocation($username, $location, $hn, $un, $pw, $db)
     $connection = new mysqli($hn, $un, $pw, $db);
     if ($connection -> connect_error) die($connection->connect_error);
     
-    if (dbGetUser($username, $hn, $un, $pw, $db) == 0) return 0;
-    
+    if (dbGetUser($username, $hn, $un, $pw, $db) == 0)
+    {
+        $connection->close();
+        return 0;
+    }
     $q = "update users set location = '$location' where username = '$username';";
     
     $r = $connection->query($q);
+    $connection->close();
     return 1;
 }
 
