@@ -1,6 +1,6 @@
 <?php
-require_once "./app/php/weatherapp.php";
-require_once './app/php/loginTesting.php';
+require "./app/php/functions.php";
+require './app/php/SQL_Testing_cred.php';
 use PHPUnit\Framework\TestCase;
 
 class checkinputTest extends TestCase {
@@ -38,7 +38,7 @@ class checkinputTest extends TestCase {
         if ($c-> connect_error) die($c->connect_error);
 
         //running the test
-        $this->assertEquals(" ",mysql_fix_string($c,"drop tables;"));
+        $this->assertEquals("\' drop tables;",mysql_fix_string($c,"' drop tables;"));
     }
 
     public function testfix_string(){
@@ -53,7 +53,7 @@ class checkinputTest extends TestCase {
         if ($c-> connect_error) die($c->connect_error);
 
         // Running Test
-        $this->assertEquals("Stuff",fix_string($c,"<h>Stuff</h>"));
+        $this->assertEquals("&lt;h&gt;Stuff&lt;/h&gt;",fix_string($c,"<h>Stuff</h>"));
     }
 
 

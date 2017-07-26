@@ -11,6 +11,7 @@
 }*/
 
 //Return Email upon request
+
 function pageStart()
 {
     session_start();
@@ -25,6 +26,7 @@ function pageStart()
         return "error";
     }
 }
+
 function loginFunction($username, $password, $hn, $un, $pw, $db)
 {
     $r = dbGetUser($username, $hn, $un, Spw, $db);
@@ -40,6 +42,7 @@ function loginFunction($username, $password, $hn, $un, $pw, $db)
         return $r['location'];
     }
 }
+
 function logoutFunction()
 {
     session_start();
@@ -101,6 +104,7 @@ function dbDeleteUser($username, $hn, $un, $pw, $db)
 
 }
 
+
 function dbEditLocation($username, $location, $hn, $un, $pw, $db)
 {
     $connection = new mysqli($hn, $un, $pw, $db);
@@ -120,7 +124,7 @@ function dbEditLocation($username, $location, $hn, $un, $pw, $db)
 
 function createAccount($username, $password, $email, $location, $hn, $un, $pw, $db)
 {
-    require_once "weatherapp.php";
+    require_once "function.php";
     
     $connection = new mysqli($hn, $un, $pw, $db);
     if ($connection -> connect_error) die($connection->connect_error);
