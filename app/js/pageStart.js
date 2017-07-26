@@ -5,16 +5,17 @@
       url: 'php/weatherapp.php',
       data: {pageStart: true},
       success: function (data) {
+        console.log(data);
         if(data != "0"){
 
-            data = data.split("%");
+            res = data.split("%");
 
             //place returned location into var location
-            var loc = data[1].split("-");
+            var loc = res[1].split("-");
             addLocation(loc[0],loc[1]);
 
             //keep track of user
-            globalUser = data[0];          
+            globalUser = res[0];          
 
             document.getElementById("signInStuff").style.display="none";
             document.getElementById("signOutBtn").style.display="inline-block";
