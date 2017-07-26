@@ -5,6 +5,7 @@ php:
 sudo: required
 services:
   - docker
+  - mysql
 
 before_install:
   - docker-compose up -d
