@@ -166,13 +166,19 @@ final class DatabaseTest extends TestCase
         $r = $c->query($q);
         if(!$r) die($c->error);
         
+        $q = "select * from users where username = 'usernametest';";
+
+        $r = $connection->query($q);
+        if(!$r) die($c->error);
+        $numrowsBefore = $r->num_rows;
+        
         $n = dbDeleteUser('usernametest', $hn, $un, $pw, $db);
         
         $q = "select * from users where username = 'usernametest';";
 
         $r = $connection->query($q);
         if(!$r) die($c->error);
-        $numrows = $r->num_rows;
+        $numrowsAfter = $r->num_rows;
         
 //        $q = "drop table if exists usersTest;";
 //        $r = $c->query($q);
@@ -183,8 +189,8 @@ final class DatabaseTest extends TestCase
         if(!$r) die($c->error);
         
         $c->close();
-        
-        $this->assertEquals($numrows, 0);
+        $this->assertEquals($numrowsBefore, 1);
+        $this->assertEquals($numrowsAfter, 0);
     }
 
     public function testdbEditLocation()
