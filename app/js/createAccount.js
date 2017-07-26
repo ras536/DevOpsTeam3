@@ -20,9 +20,10 @@
         data: {createUser: true, user: username, pass: password, email_address: email, loc : location},
         success: function (data) {
           if (data != 0){
-              //update session variable with current user
+            //keep track of user
+              globalUser = username;
             //Log them in
-               //login("create");
+               login("create");
           }else {
             alert("Create account failed. Please try again.");
           };

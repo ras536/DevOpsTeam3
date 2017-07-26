@@ -180,6 +180,10 @@
             <button onclick="signout();" class="btn btn-primary btn-large btn-block">Sign Out</button>
           </li>
           <!-- END SIGN OUT CODE -->
+          <!-- BEGIN DISPLAY USERNAME CODE -->
+          <li id="displayUsername" style="display:none">
+          </li>
+          <!-- END DISPLAY USERNAME CODE -->
           <!-- END LOGGED IN CODE -->
         </ul>
         <!--END SIDEBAR CODE-->
@@ -285,7 +289,11 @@
 <!-- POPULATE SELECT BOXES SCRIPT -->
 <script src="js/populateSelect.js"></script>
 <script>
+  var globalUser;
   populateSelect();
+  $(document).ready(function(){
+    pageStart();
+  }); 
 </script>
 
 <!-- Submit main weather form when enter is pressed -->

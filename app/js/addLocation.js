@@ -27,14 +27,18 @@ function addLocation(newCity, newState) {
                     data: {editLocation: true, user: username, loc : location},
                     success: function (data) {
                       if (data != 0){
+                        //keep track of user
+                        globalUser = username;
+
+                        //begin updating page with new location
                         document.getElementById('addLocForm').style.display='none';
 
-                        var subLocationList = document.getElementById('subLocationList');  
-                        var li = document.createElement("li");
+                        //var subLocationList = document.getElementById('subLocationList');  
+                        //var li = document.createElement("li");
 
-                        li.setAttribute("id", newCity+"-"+newState);
-                        subLocationList.appendChild(li);
-                        document.getElementById(newCity+'-'+newState).innerHTML = "\<button onclick=\"getWeather('"+newCity+"','"+newState+"');\" class=\"btn btn-primary btn-large btn-block\">"+newCity+", "+newState+"\</button>";
+                        //li.setAttribute("id", newCity+"-"+newState);
+                        //subLocationList.appendChild(li);
+                        document.getElementById('defualtLoc').innerHTML = "\<button onclick=\"getWeather('"+newCity+"','"+newState+"');\" class=\"btn btn-primary btn-large btn-block\">"+newCity+", "+newState+"\</button>";
                       }else {
                         alert("Add location failed. Please try again.");
                       };
