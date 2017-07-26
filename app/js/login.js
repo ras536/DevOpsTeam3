@@ -13,7 +13,7 @@
       url: 'php/weatherapp.php',
       data: {login: true, user: username, pass: password},
       success: function (data) {
-        if(data != 0){
+        if(data != "0"){
           //keep track of user
             globalUser = username;
           //place returned location into var location

@@ -5,7 +5,7 @@
       url: 'php/weatherapp.php',
       data: {pageStart: true},
       success: function (data) {
-        if(data != 0){
+        if(data != "0"){
 
             data = data.split("%");
 

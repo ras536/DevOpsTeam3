@@ -26,7 +26,7 @@ function addLocation(newCity, newState) {
                     url: 'php/weatherapp.php',
                     data: {editLocation: true, user: username, loc : location},
                     success: function (data) {
-                      if (data != 0){
+                      if (data != "0"){
                         //keep track of user
                         globalUser = username;
 
