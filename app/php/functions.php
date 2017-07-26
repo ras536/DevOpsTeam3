@@ -42,7 +42,7 @@ function logoutFunction()
 function dbCreateUser($username, $password, $email, $location, $hn, $un, $pw, $db)
 {
     $connection = new mysqli($hn, $un, $pw, $db);
-    if ($connection -> connect_error) die($connection->connect_error);
+    if ($connection -> connect_error) return ($connection->connect_error);
 
     if(dbGetUser($username, $hn, $un, $pw, $db) != 0)
     {
@@ -56,7 +56,7 @@ function dbCreateUser($username, $password, $email, $location, $hn, $un, $pw, $d
 
     $r = $connection->query($q);
 
-    if(!$r) die ($connection->error);
+    if(!$r) return ($connection->error);
     $connection->close();
     return $r;
 }
