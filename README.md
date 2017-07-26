@@ -11,13 +11,16 @@ Development Stack
 
 Automated Testing
 -----------------
-To run automated testing on the backend php code:
-1. Setup PHPunit according to https://phpunit.de/getting-started.html
-2. move into the tests/ folder
-3. run 
-        <phpunit checkinputTest.php>
+Prerequisites:
+* docker-compose
+* phpunit 
 
-The output will show our current progress on our backend
+To run automated testing on the backend php code:
+<docker-compose up -d
+phpunit
+>
+
+The output will show our current test results on our backend
 
  Team Members
  ------------
