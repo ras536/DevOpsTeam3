@@ -32,6 +32,9 @@
       <div id="sidebar-wrapper">
         <!--PLACE ALL SIDEBAR CODE HERE-->
         <ul class="sidebar-nav" style="margin-left: 0">
+          <!-- BEGIN DISPLAY USERNAME CODE -->
+          <li id="displayUsername" class="btn btn-primary btn-large btn-block"></li>
+          <!-- END DISPLAY USERNAME CODE -->
           <!-- BEGIN SIGNED OUT CODE / LOGIN FORM CODE -->
           <li id="signInStuff">
             <button onclick="document.getElementById('loginForm').style.display='block'" class="btn btn-primary btn-large btn-block">Sign In</button>
@@ -137,7 +140,7 @@
 
           <!-- BEGIN ADD LOCATION FORM -->
           <li id="addLocation" style="display:none">
-            <button onclick="document.getElementById('addLocForm').style.display='block'" class="btn btn-primary btn-large btn-block">Add Location</button>
+            <button onclick="document.getElementById('addLocForm').style.display='block'" class="btn btn-primary btn-large btn-block">Edit Location</button>
 
             <form class="animate" method="post" action="">
               <div id="addLocForm" class="modal">
@@ -181,10 +184,6 @@
             <button onclick="signout();" class="btn btn-primary btn-large btn-block">Sign Out</button>
           </li>
           <!-- END SIGN OUT CODE -->
-          <!-- BEGIN DISPLAY USERNAME CODE -->
-          <li id="displayUsername" style="display:none">
-          </li>
-          <!-- END DISPLAY USERNAME CODE -->
           <!-- END LOGGED IN CODE -->
         </ul>
         <!--END SIDEBAR CODE-->

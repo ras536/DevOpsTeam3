@@ -19,6 +19,7 @@
         url: 'php/weatherapp.php',
         data: {createUser: true, user: username, pass: password, email_address: email, loc : location},
         success: function (data) {
+          console.log(data);
           if (data != "0"){
             //keep track of user
               globalUser = username;

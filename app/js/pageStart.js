@@ -23,7 +23,7 @@
             document.getElementById("addLocation").style.display="inline-block";
 
         }else{
-          alert("Please login as usual.");
+          
         };
       }
     });

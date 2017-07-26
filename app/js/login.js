@@ -6,7 +6,7 @@
     }else if (from = "create"){
       var username = document.getElementById('create-username').value;
       var password = document.getElementById('create-pass').value;
-    }
+    };
 
     jQuery.ajax({
       type: "GET",
@@ -14,6 +14,7 @@
       data: {login: true, user: username, pass: password},
       success: function (data) {
         if(data != "0"){
+          console.log(data);
           //keep track of user
             globalUser = username;
           //place returned location into var location
@@ -21,6 +22,7 @@
             location = location.split("-");
             addLocation(location[0],location[1]);
             
+            document.getElementById("displayUsername").style.display="inline-block";
             document.getElementById("displayUsername").innerHTML = "<h2>"+globalUser+"</h2>";
             document.getElementById("signInStuff").style.display="none";
             document.getElementById("signOutBtn").style.display="inline-block";
