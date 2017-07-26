@@ -49,7 +49,7 @@ class checkinputTest extends TestCase {
         $db = $GLOBALS['dblogin'];
 
         //Creating connection to database
-        $c = new mysqli($hn, $un, $pw, $db);
+        $c = new mysqli("172.25.0.3", $un, $pw, $db);
         if ($c-> connect_error) die($c->connect_error);
 
         // Running Test

@@ -2,6 +2,7 @@ version: '3'
 services:
     web:
         image : "php:5.6.31-apache"
+        container_name: web_server
         ports:
             - "80:80"
         volumes:
@@ -10,8 +11,9 @@ services:
             - mysql
     mysql:
         image: "mysql:8.0.1"
+        container_name: sql_server
         environment:
             MYSQL_ROOT_PASSWORD: "qwqwqwopl3"
             MYSQL_DATABASE: "devopsteam3"
-        #ports: 
-            #- 3306:3306
+        ports: 
+            - 3306:3306

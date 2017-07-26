@@ -12,6 +12,13 @@ if(isset($_GET['login'])){
     }
 }
 
+if(isset($_GET['pageStart'])){
+    if($_GET['pageStart'] == "true"){
+        $result = pageStart();
+        echo $result;
+    } 
+}
+
 if(isset($_POST['createUser'])){
     if($_POST['createUser'] == "true"){
         $user = $_POST['user']; 

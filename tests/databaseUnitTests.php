@@ -58,7 +58,7 @@ final class DatabaseTest extends TestCase
         
         $r = pageStart();
         
-        $this->assertEquals($r, 'error');
+        $this->assertEquals($r, 0);
         
         session_destroy();
     }

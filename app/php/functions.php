@@ -11,7 +11,7 @@ function pageStart()
     }
     else
     {
-        return "error";
+        return 0;
     }
 }
 
