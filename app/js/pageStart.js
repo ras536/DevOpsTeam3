@@ -1,24 +1,20 @@
-  function login(from) {
-
-    if (from == "login"){
-      var username = document.getElementById('login-name').value;
-      var password = document.getElementById('login-pass').value;
-    }else if (from = "create"){
-      var username = document.getElementById('create-username').value;
-      var password = document.getElementById('create-pass').value;
-    }
+  function pageStart() {
 
     jQuery.ajax({
       type: "GET",
-      url: './app/php/weatherapp.php',
-      data: {pageStart: true, user: username, pass: password},
+      url: 'php/weatherapp.php',
+      data: {pageStart: true},
       success: function (data) {
         if(data != 0){
-          //keep track of user
-            //update session variable of username
-          //place returned location into var location
-            var loc = str.split("-");
-            addLocation(location[0],location[1]);
+
+            data = data.split("%");
+
+            //place returned location into var location
+            var loc = data[1].split("-");
+            addLocation(loc[0],loc[1]);
+
+            //keep track of user
+            globalUser = data[0];          
 
             document.getElementById("signInStuff").style.display="none";
             document.getElementById("signOutBtn").style.display="inline-block";

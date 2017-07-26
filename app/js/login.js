@@ -10,7 +10,7 @@
 
     jQuery.ajax({
       type: "GET",
-      url: './app/php/weatherapp.php',
+      url: 'php/weatherapp.php',
       data: {login: true, user: username, pass: password},
       success: function (data) {
         if(data != 0){

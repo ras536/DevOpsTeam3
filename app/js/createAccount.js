@@ -16,7 +16,7 @@
     
     jQuery.ajax({
         type: "POST",
-        url: './app/php/weatherapp.php',
+        url: 'php/weatherapp.php',
         data: {createUser: true, user: username, pass: password, email_address: email, loc : location},
         success: function (data) {
           if (data != 0){
