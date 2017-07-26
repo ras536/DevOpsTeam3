@@ -1,6 +1,6 @@
 <?php
-require_once "SQL_Testing_cred.php";
-//require_once "SQL_Gcloud_cred.php";
+//require_once "SQL_Testing_cred.php";
+require_once "SQL_Gcloud_cred.php";
 require_once "functions.php";
 
 if(isset($_GET['login'])){
