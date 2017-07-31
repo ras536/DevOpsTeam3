@@ -16,7 +16,8 @@
 
             //keep track of user
             globalUser = res[0];          
-
+            
+            document.getElementById("displayUsername").innerHTML = "<h2>"+globalUser+"</h2>";
             document.getElementById("signInStuff").style.display="none";
             document.getElementById("signOutBtn").style.display="inline-block";
             document.getElementById("locationList").style.display="inline-block";
