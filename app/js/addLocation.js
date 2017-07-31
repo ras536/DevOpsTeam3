@@ -18,7 +18,6 @@ function addLocation(newCity, newState) {
                 //place city-state into one var to send to DB
                 var location = newCity.concat("-");
                 var location = location.concat(newState);
-
                 jQuery.ajax({
                     type: "POST",
                     url: 'php/weatherapp.php',
