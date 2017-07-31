@@ -32,7 +32,11 @@ if(isset($_POST['createUser'])){
 
 if(isset($_POST['editLocation'])){
     if($_POST['editLocation'] == "true"){
-        $user = $_POST['user']; 
+        session_start();
+        if(isset($_SESSION['username']))
+        {
+            $user = $_SESSION['username'];
+        }
         $loc  = $_POST['loc'];
         $output = dbEditLocation($user,$loc,$hn,$un,$pw,$db);
         echo $output;
