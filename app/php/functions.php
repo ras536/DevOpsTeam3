@@ -34,6 +34,7 @@ function loginFunction($username, $password, $hn, $un, $pw, $db)
 function logoutFunction()
 {
     session_start();
+    $_SESSION = array();
     session_destroy();
     return 1;
     
