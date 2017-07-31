@@ -17,7 +17,7 @@ function pageStart()
 
 function loginFunction($username, $password, $hn, $un, $pw, $db)
 {
-    $r = dbGetUser($username, $hn, $un, Spw, $db);
+    $r = dbGetUser($username, $hn, $un, $pw, $db);
     
     if($r == 0) return 0;
     
