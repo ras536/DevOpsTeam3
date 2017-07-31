@@ -22,7 +22,7 @@ function addLocation(newCity, newState) {
                 jQuery.ajax({
                     type: "POST",
                     url: 'php/weatherapp.php',
-                    data: {editLocation: true, user: username, loc : location},
+                    data: {editLocation: true, user: globalUser, loc : location},
                     success: function (data) {
                       if (data != "0"){
                         console.log(data);
