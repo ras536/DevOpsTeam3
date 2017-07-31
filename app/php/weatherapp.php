@@ -3,7 +3,7 @@
 require_once "SQL_Gcloud_cred.php";
 require_once "functions.php";
 
-if(isset($_GET['login'])){
+if(isset($_GET['user_login'])){
     if($_GET['user_login'] == "true"){
         $user = $_GET['user'];
         $pass = $_GET['pass'];

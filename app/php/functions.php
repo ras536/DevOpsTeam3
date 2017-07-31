@@ -64,13 +64,13 @@ function dbCreateUser($username, $password, $email, $location, $hn, $un, $pw, $d
 function dbGetUser($username, $hn, $un, $pw, $db)
 {
     $connection = new mysqli($hn, $un, $pw, $db);
-    if ($connection -> connect_error) die($connection->connect_error);
+    if ($connection -> connect_error) return ($connection->connect_error);
 
     $q = "select * from users where username = '$username';";
 
     $r = $connection->query($q);
     $connection->close();
-    if(!$r) return 0;
+    if(!$r) return ($connection->error);
     if($r->num_rows == 0) return 0;
     $r->data_seek(0);
     $row = $r->fetch_array(MYSQLI_ASSOC);
@@ -81,7 +81,7 @@ function dbGetUser($username, $hn, $un, $pw, $db)
 function dbDeleteUser($username, $hn, $un, $pw, $db)
 {
     $connection = new mysqli($hn, $un, $pw, $db);
-    if ($connection -> connect_error) die($connection->connect_error);
+    if ($connection -> connect_error) return ($connection->connect_error);
     
     $q = "delete from users where username = '$username';";
     
@@ -96,7 +96,7 @@ function dbDeleteUser($username, $hn, $un, $pw, $db)
 function dbEditLocation($username, $location, $hn, $un, $pw, $db)
 {
     $connection = new mysqli($hn, $un, $pw, $db);
-    if ($connection -> connect_error) die($connection->connect_error);
+    if ($connection -> connect_error) return ($connection->connect_error);
     
     if (dbGetUser($username, $hn, $un, $pw, $db) == 0)
     {
@@ -115,7 +115,7 @@ function createAccount($username, $password, $email, $location, $hn, $un, $pw, $
     require_once "function.php";
     
     $connection = new mysqli($hn, $un, $pw, $db);
-    if ($connection -> connect_error) die($connection->connect_error);
+    if ($connection -> connect_error) return ($connection->connect_error);
     
     $u = fix_string($connection, trim($username));
     $p = fix_string($connection, trim($password));
