@@ -38,6 +38,14 @@ if(isset($_POST['editLocation'])){
         echo $output;
     }
 }
+if(isset($_POST['logout']))
+{
+    if($_POST['logout'] == "true")
+    {
+        $r = logoutFunction();
+        echo $r;
+    }
+}
 
 /*
 if(isset($_GET['get_username'])){
