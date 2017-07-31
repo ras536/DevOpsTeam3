@@ -38,9 +38,9 @@ if(isset($_POST['editLocation'])){
         echo $output;
     }
 }
-if(isset($_POST['logout']))
+if(isset($_GET['logout']))
 {
-    if($_POST['logout'] == "true")
+    if($_GET['logout'] == "true")
     {
         $r = logoutFunction();
         echo $r;
